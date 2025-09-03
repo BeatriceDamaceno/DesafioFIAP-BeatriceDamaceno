@@ -1,0 +1,71 @@
+﻿@page
+@model Desafio_FIAP___Beatrice_Damaceno.Pages.Turmas.IndexModel
+
+@{
+    ViewData["Title"] = "Turmas";
+}
+
+<h1>Turmas</h1>
+
+<p>
+    <a asp-page="Create">Criar Nova Turma</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Turmas[0].NomeTurma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Turmas[0].DescTurma)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Turmas) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeTurma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescTurma)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TurmaId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TurmaId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TurmaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<p>
+    Página @Model.Turmas.PageIndex de @Model.Turmas.TotalPages <br />
+    Total: @Model.Turmas.TotalRows Turmas
+</p>
+
+<div class="pagination">
+    @if (Model.Turmas.HasPreviousPage)
+    {
+        <a asp-page="./Index" asp-route-pageIndex="@(Model.Turmas.PageIndex - 1)">Anterior</a>
+    }
+    else
+    {
+        <p>Anterior</p>
+    }
+
+    <p style="white-space: pre;"> || </p>
+
+    @if (Model.Turmas.HasNextPage)
+    {
+        <a asp-page="./Index" asp-route-pageIndex="@(Model.Turmas.PageIndex + 1)">Próxima</a>
+    }
+    else
+    {
+        <p>Próxima</p>
+    }
+
+
+</div>

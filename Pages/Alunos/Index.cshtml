@@ -2,37 +2,35 @@
 @model Desafio_FIAP___Beatrice_Damaceno.Pages.Alunos.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Alunos";
 }
 
-<h1>Index</h1>
+<h1>Alunos</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Cadastrar Aluno</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Aluno[0].Nome)
+                @Html.DisplayNameFor(model => model.Alunos[0].Nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Aluno[0].CPF)
+                @Html.DisplayNameFor(model => model.Alunos[0].CPF)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Aluno[0].Nascimento)
+                @Html.DisplayNameFor(model => model.Alunos[0].Nascimento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Aluno[0].Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Aluno[0].Senha)
+                @Html.DisplayNameFor(model => model.Alunos[0].Email)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Aluno) {
+@foreach (var item in Model.Alunos) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
@@ -47,9 +45,6 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Senha)
-            </td>
-            <td>
                 <a asp-page="./Edit" asp-route-id="@item.AlunoId">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.AlunoId">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.AlunoId">Delete</a>
@@ -58,3 +53,30 @@
 }
     </tbody>
 </table>
+
+    <p> Página @Model.Alunos.PageIndex de @Model.Alunos.TotalPages <br />
+    Total: @Model.Alunos.TotalRows Alunos
+    </p>
+
+<div class="pagination">
+    @if (Model.Alunos.HasPreviousPage)
+    {
+        <a asp-page="./Index" asp-route-pageIndex="@(Model.Alunos.PageIndex - 1)">Anterior</a>
+    } else
+    {
+        <p>Anterior</p>    
+    }
+
+    <p style="white-space: pre;"> || </p>
+
+    @if (Model.Alunos.HasNextPage)
+    {
+        <a asp-page="./Index" asp-route-pageIndex="@(Model.Alunos.PageIndex + 1)">Próxima</a>
+    }
+    else
+    {
+        <p>Próxima</p>
+    }
+
+
+</div>

@@ -13,11 +13,15 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Pages.Alunos
             _context = context;
         }
 
-        public IList<Aluno> Aluno { get;set; } = default!;
+        public AlunoPaginated<Aluno> Alunos { get;set; } = default!;
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int? pageIndex)
         {
-            Aluno = await _context.Alunos.ToListAsync();
+            int pageSize = 10;
+            IQueryable<Aluno> alunosQuery = from a in _context.Alunos select a;
+
+            Alunos = await AlunoPaginated<Aluno>.CreateAsync(alunosQuery.AsNoTracking(), pageIndex ?? 1, pageSize);
+
         }
     }
 }

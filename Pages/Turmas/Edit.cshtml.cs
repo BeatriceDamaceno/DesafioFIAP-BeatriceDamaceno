@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Desafio_FIAP___Beatrice_Damaceno.Models;
 
-namespace Desafio_FIAP___Beatrice_Damaceno.Pages
+namespace Desafio_FIAP___Beatrice_Damaceno.Pages.Turmas
 {
     public class EditModel : PageModel
     {
