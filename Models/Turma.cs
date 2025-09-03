@@ -12,7 +12,8 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TurmaId { get; set; }
 
-        [Required, StringLength(30), DataType(DataType.Text)]
+        [Required, DataType(DataType.Text)]
+        [StringLength(30, MinimumLength = 4, ErrorMessage = "O nome deve ter pelo menos 4 caracteres")]
         public string NomeTurma { get; set; }
 
         [Required,StringLength(100), DataType(DataType.MultilineText)]

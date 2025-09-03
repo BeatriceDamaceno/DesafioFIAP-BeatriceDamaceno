@@ -1,59 +1,79 @@
 ﻿@page
 @model Desafio_FIAP___Beatrice_Damaceno.Pages.Alunos.CreateModel
 
-        @{
-        ViewData["Title"] = "Create";
-        }
-        
-        <h1>Create</h1>
-        
-    <h4>Aluno</h4>
-    <hr />
-    <div class="row">
-    <div class="col-md-4">
-    <form method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <span class="text-danger">*</span>
+@{
+    ViewData["Title"] = "Cadastrar Aluno";
+}
+
+<h1>Cadastrar Novo Aluno</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
                 <label asp-for="Aluno.Nome" class="control-label"></label>
-                <input asp-for="Aluno.Nome" class="form-control" />
+                <span class="text-danger">*</span>
+                <input asp-for="Aluno.Nome" class="form-control" placeholder="Digite o nome completo" />
                 <span asp-validation-for="Aluno.Nome" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <span class="text-danger">*</span>
+
+            <div class="form-group mb-3">
                 <label asp-for="Aluno.CPF" class="control-label"></label>
-                <input asp-for="Aluno.CPF" class="form-control" />
+                <span class="text-danger">*</span>
+                <input asp-for="Aluno.CPF" class="form-control" placeholder="00000000000" maxlength="11" />
                 <span asp-validation-for="Aluno.CPF" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <span class="text-danger">*</span>
+
+            <div class="form-group mb-3">
                 <label asp-for="Aluno.Nascimento" class="control-label"></label>
-                <input asp-for="Aluno.Nascimento" class="form-control" />
+                <span class="text-danger">*</span>
+                <input asp-for="Aluno.Nascimento" type="date" class="form-control" />
                 <span asp-validation-for="Aluno.Nascimento" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <span class="text-danger">*</span>
+
+            <div class="form-group mb-3">
                 <label asp-for="Aluno.Email" class="control-label"></label>
-                <input asp-for="Aluno.Email" class="form-control" />
+                <span class="text-danger">*</span>
+                <input asp-for="Aluno.Email" type="email" class="form-control" placeholder="exemplo@email.com" />
                 <span asp-validation-for="Aluno.Email" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <span class="text-danger">*</span>
+
+            <div class="form-group mb-3">
                 <label asp-for="Aluno.Senha" class="control-label"></label>
-                <input asp-for="Aluno.Senha" class="form-control" />
+                <span class="text-danger">*</span>
+                <input asp-for="Aluno.Senha" type="password" class="form-control"
+                       placeholder="Digite sua senha" />
                 <span asp-validation-for="Aluno.Senha" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    <br />
+                    A senha deve ter pelo menos 8 caracteres, incluindo:<br>
+                    • Uma letra maiúscula<br>
+                    • Uma letra minúscula<br>
+                    • Um número<br>
+                    • Um caractere especial
+                </small>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+                <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Client-side validation for CPF (only numbers)
+        document.getElementById('Aluno_CPF').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
 }

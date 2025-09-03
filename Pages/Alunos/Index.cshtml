@@ -11,6 +11,39 @@
     <a asp-page="Create">Cadastrar Aluno</a>
 </p>
 
+<form method="get" class="mb-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar por nome..."
+                       asp-for="BuscaString" />
+                <button type="submit" class="btn btn-outline-secondary">
+                    <i class="bi bi-search"></i> Buscar
+                </button>
+                @if (!string.IsNullOrEmpty(Model.BuscaString))
+                {
+                    <a asp-page="./Index" class="btn btn-outline-danger">Limpar</a>
+                }
+            </div>
+        </div>
+    </div>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.BuscaString))
+{
+    <div class="alert alert-info">
+        Resultados da busca por: <strong>@Model.BuscaString</strong>
+        @if (Model.Alunos.TotalRows == 0)
+        {
+            <span> - Nenhum resultado encontrado</span>
+        }
+        else
+        {
+            <span> - @Model.Alunos.TotalRows resultado(s) encontrado(s)</span>
+        }
+    </div>
+}
+
 <table class="table">
     <thead>
         <tr>

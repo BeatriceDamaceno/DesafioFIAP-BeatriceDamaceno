@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Desafio_FIAP___Beatrice_Damaceno.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Desafio_FIAP___Beatrice_Damaceno.Pages.Alunos
 {
@@ -34,10 +36,21 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Pages.Alunos
                 return Page();
             }
 
+            Aluno.Senha = HashPassword(Aluno.Senha);
+
             _context.Alunos.Add(Aluno);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
+        }
+
+        private string HashPassword(string password)
+        { 
+            using (var sha256 = SHA256.Create())
+            {
+                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(hashedBytes);
+            }
         }
     }
 }
