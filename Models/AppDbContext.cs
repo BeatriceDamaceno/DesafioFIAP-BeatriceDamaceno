@@ -15,6 +15,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Models
         public virtual DbSet<Aluno> Alunos { get; set; } = null;
         public virtual DbSet<Turma> Turmas { get; set; } = null;
         public virtual DbSet<Matricula> Matriculas { get; set; } = null;
+        public virtual DbSet<Admin> Admins { get; set; } = null;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
