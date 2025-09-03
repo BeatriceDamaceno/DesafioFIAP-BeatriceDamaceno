@@ -1,10 +1,12 @@
 ﻿using Desafio_FIAP___Beatrice_Damaceno.Models;
 using Desafio_FIAP___Beatrice_Damaceno.Pages.Alunos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace Desafio_FIAP___Beatrice_Damaceno.Pages.Turmas
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly AppDbContext _context;

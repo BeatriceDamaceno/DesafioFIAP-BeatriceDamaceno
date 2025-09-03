@@ -18,12 +18,21 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Services
 
         public async Task<(bool Success, string Token, Admin Admin)> LoginAsync(string login, string password)
         {
-            var admin = await _context.Admins.FirstOrDefaultAsync(a => a.Login == login);
+            var admin = _context.Admins.FirstOrDefault(a => a.Login == login);
 
             if (admin == null || !VerifyPassword(password, admin.Senha))
             {
                 return (false, null, null);
             }
+
+            /*
+            var adminToUpdate = await _context.Admins.FindAsync(admin.Id);
+            if (adminToUpdate != null)
+            {
+                adminToUpdate.UltimoLogin = DateTime.Now;
+                await _context.SaveChangesAsync();
+            }
+            */
 
             var token = _jwtService.GenerateToken(admin);
             return (true, token, admin);

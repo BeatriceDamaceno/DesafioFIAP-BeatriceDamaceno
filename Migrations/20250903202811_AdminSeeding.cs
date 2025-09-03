@@ -10,7 +10,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql(@"INSERT INTO Admins (Login, Senha) VALUES ('admin@email.com', HASHBYTES('SHA2_256', 'Admin!123123'))");
+            migrationBuilder.Sql(@"INSERT INTO Admins (Login, Senha) VALUES ('admin@email.com', 'd4UrWAvIVL915GkR2weFoC1tyNEGfQzYNInatwWxxqc=')");
         }
 
         /// <inheritdoc />

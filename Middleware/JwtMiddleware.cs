@@ -29,7 +29,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Middleware
         private void AttachUserToContext(HttpContext context, string token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(context.RequestServices.GetService<IConfiguration>()["Jtw:Key"]);
+            var key = Encoding.UTF8.GetBytes(context.RequestServices.GetService<IConfiguration>()["Jwt:Key"]);
 
             tokenHandler.ValidateToken(token, new TokenValidationParameters
             {

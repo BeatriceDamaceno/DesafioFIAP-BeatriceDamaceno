@@ -1,8 +1,9 @@
-using Desafio_FIAP___Beatrice_Damaceno.Models.DTOs;
+﻿using Desafio_FIAP___Beatrice_Damaceno.Models.DTOs;
 using Desafio_FIAP___Beatrice_Damaceno.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.DataAnnotations;
 
 namespace Desafio_FIAP___Beatrice_Damaceno.Pages.Admin
 {
@@ -21,6 +22,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Pages.Admin
 
         public void OnGet()
         {
+            Response.Cookies.Delete("X-Access-Token");
         }
 
         public async Task<IActionResult> OnPostAsync()
