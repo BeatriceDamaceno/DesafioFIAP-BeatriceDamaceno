@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Desafio_FIAP___Beatrice_Damaceno.Models;
+﻿using Desafio_FIAP___Beatrice_Damaceno.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace Desafio_FIAP___Beatrice_Damaceno.Pages.Alunos
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly AppDbContext _context;

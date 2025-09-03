@@ -1,10 +1,12 @@
 using Desafio_FIAP___Beatrice_Damaceno.Models.DTOs;
 using Desafio_FIAP___Beatrice_Damaceno.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Desafio_FIAP___Beatrice_Damaceno.Pages.Admin
 {
+    [AllowAnonymous]
     public class LoginModel : PageModel
     {
         private readonly AuthService _authService;

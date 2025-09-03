@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Desafio_FIAP___Beatrice_Damaceno.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Desafio_FIAP___Beatrice_Damaceno.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Desafio_FIAP___Beatrice_Damaceno.Pages.Alunos
 {
+    [Authorize]
     public class CreateModel : PageModel
     {
         private readonly Desafio_FIAP___Beatrice_Damaceno.Models.AppDbContext _context;
