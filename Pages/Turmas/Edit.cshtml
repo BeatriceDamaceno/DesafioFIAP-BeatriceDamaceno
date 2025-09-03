@@ -1,0 +1,42 @@
+﻿@page
+@model Desafio_FIAP___Beatrice_Damaceno.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Turma</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Turma.TurmaId" />
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Turma.NomeTurma" class="control-label"></label>
+                <input asp-for="Turma.NomeTurma" class="form-control" />
+                <span asp-validation-for="Turma.NomeTurma" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Turma.DescTurma" class="control-label"></label>
+                <textarea asp-for="Turma.DescTurma" class="form-control"></textarea>
+                <span asp-validation-for="Turma.DescTurma" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
