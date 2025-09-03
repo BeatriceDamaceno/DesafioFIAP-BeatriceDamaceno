@@ -5,26 +5,71 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>@Html.DisplayFor(model => model.Turma.NomeTurma)</h1>
 
 <div>
-    <h4>Turma</h4>
+    <h4>@Html.DisplayFor(model => model.Turma.DescTurma)</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Turma.NomeTurma)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Turma.NomeTurma)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Turma.DescTurma)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Turma.DescTurma)
-        </dd>
-    </dl>
 </div>
+
+<div class="mt-4">
+    <h5>Alunos Matriculados</h5>
+
+    <form method="post" asp-page-handler="AddAluno" class="mb-3">
+        <input type="hidden" name="turmaId" value="@Model.Turma.TurmaId" />
+        <div class="row">
+            <div class="col-md-6">
+                <select name="alunoId" class="form-select" required>
+                    <option value="">Selecione um Aluno</option>
+                    @foreach (var aluno in Model.AlunosDisponiveis)
+                    {
+                        <option value="@aluno.Value">@aluno.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success">Matricular Aluno</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Students List -->
+    @if (Model.AlunosMatriculados.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var aluno in Model.AlunosMatriculados)
+                {
+                    <tr>
+                        <td>@aluno.Nome</td>
+                        <td>@aluno.Email</td>
+                        <td>@aluno.CPF</td>
+                        <td>
+                            <form method="post" asp-page-handler="RemoveAluno" class="d-inline">
+                                <input type="hidden" name="turmaId" value="@Model.Turma.TurmaId" />
+                                <input type="hidden" name="alunoId" value="@aluno.AlunoId" />
+                                <button type="submit" class="btn btn-danger btn-sm">Remover</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info">Nenhum aluno matriculado nesta turma.</div>
+    }
+</div>
+
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Turma.TurmaId">Edit</a> |
     <a asp-page="./Index">Back to List</a>

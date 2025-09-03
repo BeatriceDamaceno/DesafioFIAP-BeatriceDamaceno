@@ -54,7 +54,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Migrations
 
                     b.HasKey("AlunoId");
 
-                    b.ToTable("Alunos");
+                    b.ToTable("Alunos", (string)null);
                 });
 
             modelBuilder.Entity("Desafio_FIAP___Beatrice_Damaceno.Models.Matricula", b =>
@@ -73,7 +73,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Migrations
 
                     b.HasKey("MatriculaId");
 
-                    b.ToTable("Matriculas");
+                    b.ToTable("Matriculas", (string)null);
                 });
 
             modelBuilder.Entity("Desafio_FIAP___Beatrice_Damaceno.Models.Turma", b =>
@@ -96,7 +96,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Migrations
 
                     b.HasKey("TurmaId");
 
-                    b.ToTable("Turmas");
+                    b.ToTable("Turmas", (string)null);
                 });
 #pragma warning restore 612, 618
         }

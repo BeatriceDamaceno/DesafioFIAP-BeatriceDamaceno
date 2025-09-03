@@ -16,5 +16,8 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Models
         [Required, ForeignKey("Turmas")]
         public int TurmaId { get; set; }
 
+        [NotMapped]
+        public Aluno Aluno { get; set; }
+
     }
 }

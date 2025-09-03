@@ -14,10 +14,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Turmas[0].NomeTurma)
+                Nome
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Turmas[0].DescTurma)
+                Descrição
+            </th>
+            <th>
+                Alunos
             </th>
             <th></th>
         </tr>
@@ -30,6 +33,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DescTurma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdAlunos)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.TurmaId">Edit</a> |

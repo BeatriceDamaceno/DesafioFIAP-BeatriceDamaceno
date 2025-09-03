@@ -19,6 +19,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Pages.Alunos
         {
             int pageSize = 10;
             IQueryable<Aluno> alunosQuery = from a in _context.Alunos select a;
+            alunosQuery = alunosQuery.OrderBy(a => a.Nome);
 
             Alunos = await AlunoPaginated<Aluno>.CreateAsync(alunosQuery.AsNoTracking(), pageIndex ?? 1, pageSize);
 

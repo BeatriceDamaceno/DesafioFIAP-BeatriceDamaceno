@@ -17,6 +17,8 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Models
 
         [Required,StringLength(100), DataType(DataType.MultilineText)]
         public string DescTurma { get; set; }
-        
+
+        [NotMapped]
+        public int QtdAlunos { get; set; }
     }
 }

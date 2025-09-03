@@ -14,27 +14,6 @@ public class AlunoController : ControllerBase
         _context = context;
     }
 
-    private static readonly byte[] key = new byte[8] { 1, 2, 3, 4, 5, 6, 7, 8 };
-    private static readonly byte[] iv = new byte[8] { 1, 2, 3, 4, 5, 6, 7, 8 };
-
-    public static string Encrypt(string text)
-    {
-        SymmetricAlgorithm algorithm = DES.Create();
-        ICryptoTransform transform = algorithm.CreateEncryptor(key, iv);
-        byte[] inputbuffer = Encoding.Unicode.GetBytes(text);
-        byte[] outputBuffer = transform.TransformFinalBlock(inputbuffer, 0, inputbuffer.Length);
-        return Convert.ToBase64String(outputBuffer);
-    }
-
-    public static string Decrypt(byte[] text)
-    {
-        SymmetricAlgorithm algorithm = DES.Create();
-        ICryptoTransform transform = algorithm.CreateDecryptor(key, iv);
-        byte[] inputbuffer = text;
-        byte[] outputBuffer = transform.TransformFinalBlock(inputbuffer, 0, inputbuffer.Length);
-        return Encoding.Unicode.GetString(outputBuffer);
-    }
-
     // GET: api/Aluno
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Aluno>>> GetAluno()
@@ -79,7 +58,7 @@ public class AlunoController : ControllerBase
         {
             return NotFound();
         }
-
+        
         return aluno;
     }
 
