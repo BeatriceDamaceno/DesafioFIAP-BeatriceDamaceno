@@ -26,7 +26,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Models
         [Index(nameof(Email), IsUnique = true)]
         public string Email { get; set; }
 
-        [StringLength(30), Required, DataType(DataType.Password)]
+        [Required, DataType(DataType.Password)]
         public byte[] Senha { get; set; }
 
     }

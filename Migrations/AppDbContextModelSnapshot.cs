@@ -17,10 +17,10 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.0")
+                .HasAnnotation("ProductVersion", "9.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Desafio_FIAP___Beatrice_Damaceno.Models.Aluno", b =>
                 {
@@ -28,7 +28,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AlunoId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AlunoId"));
 
                     b.Property<string>("CPF")
                         .IsRequired()
@@ -48,10 +48,9 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Senha")
+                    b.Property<byte[]>("Senha")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("AlunoId");
 
@@ -64,7 +63,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MatriculaId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MatriculaId"));
 
                     b.Property<int>("AlunoId")
                         .HasColumnType("int");
@@ -83,7 +82,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TurmaId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TurmaId"));
 
                     b.Property<string>("DescTurma")
                         .IsRequired()

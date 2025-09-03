@@ -5,8 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Desafio_FIAP___Beatrice_Damaceno.Migrations
 {
+    /// <inheritdoc />
     public partial class InitialCreate : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -19,7 +21,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Migrations
                     CPF = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     Nascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
-                    Senha = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
+                    Senha = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,6 +57,7 @@ namespace Desafio_FIAP___Beatrice_Damaceno.Migrations
                 });
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
