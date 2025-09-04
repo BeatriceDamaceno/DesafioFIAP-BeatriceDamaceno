@@ -15,15 +15,16 @@
 
 # Passo a Passo
 * Acesse a página de releases do projeto
-* Baixe o arquivo 'Desafio FIAP - Beatrice Damaceno.zip'
+* Baixe o arquivo 'Desafio FIAP - Beatrice Damaceno.zip' e o arquivo dump.sql
 * Extraia o arquivo em uma pasta de sua preferência
+* Execute o script dump.sql para gerar as pastas e informações necessárias para o banco de dados
 * Execute 'Desafio FIAP - Beatrice Damaceno.exe'
 * Abra seu navegador e acesse: http://localhost:5000
 * Você será levado a uma página de Login. para autenticar, utilize o email 'admin@email.com' e a senha 'Admin!123123'
 * Depois disso, você pode usar o botão na tela inicial para acessar o Swagger, ou usar os botões Alunos e Turmas para visualizar cadastros e realizar matrículas.
 
 # Considerações
-* Ao executar o projeto, as Migrations serão rodadas automaticamente, criando as tabelas adequadas e as populando com dados mockados. Um script para geração do banco de dados está disponível na release, nomeado 'dump.sql'
+* Um script para geração do banco de dados está disponível na release, nomeado 'dump.sql'. O projeto inclui Migrations que replicam esse processo, mas a funcionalidade pode variar entre diferentes máquinas e configurações. Portanto, execute o script para garantir o funcionamento. 
 
 # Endpoints Disponíveis
 ## Alunos
