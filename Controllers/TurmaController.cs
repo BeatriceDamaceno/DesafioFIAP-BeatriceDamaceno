@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Desafio_FIAP___Beatrice_Damaceno.Models;
 
@@ -12,14 +12,24 @@ public class TurmaController : ControllerBase
         _context = context;
     }
 
-    // GET: api/Turma
+    /// <summary>
+    /// Obtém todas as turmas cadastradas
+    /// </summary>
+    /// <returns>Lista de todas as turmas</returns>
+    /// <response code="200">Retorna a lista de turmas</response>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Turma>>> GetTurma()
     {
         return await _context.Turmas.ToListAsync();
     }
 
-    // GET: api/Turma/5
+    /// <summary>
+    /// Obtém uma turma específica pelo ID
+    /// </summary>
+    /// <param name="turmaid">ID da turma</param>
+    /// <returns>Dados da turma solicitada</returns>
+    /// <response code="200">Retorna a turma encontrada</response>
+    /// <response code="404">Turma não encontrada</response>
     [HttpGet("{turmaid}")]
     public async Task<ActionResult<Turma>> GetTurma(int turmaid)
     {
@@ -33,8 +43,15 @@ public class TurmaController : ControllerBase
         return turma;
     }
 
-    // PUT: api/Turma/5
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    /// <summary>
+    /// Atualiza os dados de uma turma existente
+    /// </summary>
+    /// <param name="turmaid">ID da turma a ser atualizada</param>
+    /// <param name="turma">Objeto turma com os dados atualizados</param>
+    /// <returns>Resultado da operação</returns>
+    /// <response code="204">Turma atualizada com sucesso</response>
+    /// <response code="400">IDs não correspondem</response>
+    /// <response code="404">Turma não encontrada</response>
     [HttpPut("{turmaid}")]
     public async Task<IActionResult> PutTurma(int? turmaid, Turma turma)
     {
@@ -64,8 +81,13 @@ public class TurmaController : ControllerBase
         return NoContent();
     }
 
-    // POST: api/Turma
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    /// <summary>
+    /// Cria uma nova turma
+    /// </summary>
+    /// <param name="turma">Objeto turma a ser criada</param>
+    /// <returns>Dados da turma criada</returns>
+    /// <response code="201">Turma criada com sucesso</response>
+    /// <response code="400">Dados inválidos</response>
     [HttpPost]
     public async Task<ActionResult<Turma>> PostTurma(Turma turma)
     {
@@ -75,7 +97,13 @@ public class TurmaController : ControllerBase
         return CreatedAtAction("GetTurma", new { turmaid = turma.TurmaId }, turma);
     }
 
-    // DELETE: api/Turma/5
+    /// <summary>
+    /// Exclui uma turma específica
+    /// </summary>
+    /// <param name="turmaid">ID da turma a ser excluída</param>
+    /// <returns>Resultado da operação</returns>
+    /// <response code="204">Turma excluída com sucesso</response>
+    /// <response code="404">Turma não encontrada</response>
     [HttpDelete("{turmaid}")]
     public async Task<IActionResult> DeleteTurma(int? turmaid)
     {
