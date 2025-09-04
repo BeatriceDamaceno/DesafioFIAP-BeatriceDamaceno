@@ -23,7 +23,7 @@
 * Depois disso, você pode usar o botão na tela inicial para acessar o Swagger, ou usar os botões Alunos e Turmas para visualizar cadastros e realizar matrículas.
 
 # Considerações
-* Ao executar o projeto, as Migrations serão rodadas automaticamente, gerando um banco de dados local "SecretariaFIAP", criando as tabelas adequadas e as populando com dados mockados. Portanto, o script para geração desse banco não será necessário. 
+* Ao executar o projeto, as Migrations serão rodadas automaticamente, criando as tabelas adequadas e as populando com dados mockados. Um script para geração do banco de dados está disponível na release, nomeado 'dump.sql'
 
 # Endpoints Disponíveis
 ## Alunos
